@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"strconv"
-	"strings"
 )
 
 const CONST_EXAMPLE_TEXT = "CONST_EXAMPLE1"
@@ -19,7 +18,25 @@ func main() {
 	//example0_3()
 
 	//slicer("1 2 3 4 5 6 7 8 9 0")
-	bancomat()
+	//bancomat()
+	//recursion()
+	//comparsion([]int{1, 2, 3, 4}, []int{1, 2, 3, 4})
+	//var someVar interface{} = 224
+	//definer(someVar)
+	//cutter()
+	//concat()
+	//creator()
+	//checker()
+	//initialSlice := []int{7, 77, 6, 1, 2, 3, 5, 8, 12, 13, 15, 140, 200, 201, 202, 201, 203, 204, 1110, 500, 502, 503, 504, 505}
+	//average_value(initialSlice)
+	//StrConvToInt("8н")
+	//subseq(initialSlice)
+	//csv_value := [][]string{
+	//	{"Alice", "30", "alice@example.com"},
+	//	{"Bob", "35", "bob@example.com"},
+	//	{"Charlie", "40", "charlie@example.com"},
+	//}
+	//csv_writer(csv_value)
 }
 
 // ЗАДАНИЕ 0
@@ -152,7 +169,7 @@ func main() {
 	fmt.Println(sb.String() + " " + currency)
 }*/
 
-func bancomat() {
+/*func bancomat() {
 	var amount int
 	fmt.Print("Введите сумму: ")
 	fmt.Scan(&amount)
@@ -214,4 +231,148 @@ func bancomat() {
 	}
 
 	fmt.Println(sb.String() + " " + currency)
-}
+}*/
+// ЗАДАНИЕ 3
+/*func recursion() bool {
+	var input int
+	fmt.Print("Введите 0: ")
+	fmt.Scan(&input)
+	if input == 0 {
+		fmt.Println("поздравляю, вы ввели \"ноль\"")
+		return true
+	} else if input < 1 || input > 9 {
+		fmt.Println("попробуйте ещё раз...")
+		return recursion()
+	}
+	return recursion()
+}*/
+
+// ЗАДАНИЕ 4
+/*func comparsion(var1 []int, var2 []int) bool {
+	//fmt.Println(var1)
+	//fmt.Println(var2)
+	for i := 0; i < len(var1); i++ {
+		if var1[i] == var2[i] {
+			//fmt.Println(var1[i], "равен", var2[i])
+			continue
+		}
+		fmt.Println("Массивы не совпадают")
+		return false
+	}
+	fmt.Println("Массивы совпадают")
+	return true
+}*/
+
+// ЗАДАНИЕ 5
+/*func definer(someVar interface{}) {
+	//if reflect.TypeOf(someVar).Kind() == reflect.Int {
+	//	fmt.Println("someVar is an integer")
+	//} else if reflect.TypeOf(someVar).Kind() == reflect.Slice {
+	//	fmt.Println("someVar is an slice")
+	//} else {
+	//	fmt.Println("someVar is not an integer and not a slice")
+	//}
+	_, ok := someVar.(int)
+	if !ok {
+		fmt.Println("someVar is not an integer")
+	} else {
+		fmt.Println("someVar is an integer")
+	}
+}*/
+
+// ЗАДАНИЕ 6
+/*func cutter() {
+	myString := "Hello_World!_This.sentence.has_chars_I.want_to.remove!"
+	replacer := strings.NewReplacer("_", " ", ".", " ") // ну это прям вообще дичь дичная
+	myString = replacer.Replace(myString)
+	fmt.Println(myString)
+}*/
+
+// ЗАДАНИЕ 7
+// Слава ChatGPT! Гугл на тему конкатенации слайсов вообще околесицу выдаёт
+/*func concat() {
+	a := []int{1, 2, 3}
+	b := []int{4, 5, 6}
+	c := append(a, b...)
+	fmt.Println(c)
+}*/
+
+// ЗАДАНИЕ 8
+/*func StrConvToInt(str string) (int, error) {
+	myInt, err := strconv.Atoi(str)
+	if err != nil {
+		//fmt.Println("Переменная str - не число!")
+		fmt.Println(err)
+		return 0, err
+	}
+	fmt.Println(myInt)
+	return myInt, nil
+}*/
+
+// ЗАДАНИЕ 9
+/*func creator() {
+	file, err := os.Create("hello.txt") // создаем файл
+	if err != nil {                     // если возникла ошибка
+		fmt.Println("Unable to create file:", err)
+		os.Exit(1) // выходим из программы
+	}
+	defer file.Close()       // закрываем файл
+	fmt.Println(file.Name()) // hello.txt
+}*/
+/*func checker() {
+	fileInfo, err := os.Stat("hello.txt")
+	if os.IsNotExist(err) {
+		fmt.Println("Файла нет")
+	} else {
+		fmt.Println("Файл есть, его размер: ", fileInfo.Size())
+	}
+}*/
+
+// ЗАДАНИЕ 10
+/*func average_value(initialSlice []int) {
+	sum := 0
+	for _, value := range initialSlice {
+		sum += value
+	}
+	aver := sum / len(initialSlice)
+	fmt.Println(aver)
+}*/
+
+// ЗАДАНИЕ 11
+/*func subseq(nums []int) {
+	// подаётся это ----> initialSlice := []int{7, 77, 6, 1, 2, 3, 5, 8, 12, 13, 15, 140, 200, 201, 203, 204, 1110, 500, 502, 503, 504}
+	summa := []int{}
+	for i := 0; i < len(nums); i++ {
+		if i < len(nums)-1 && nums[i+1]-nums[i] == 1 {
+			if len(summa) > 0 {
+				if summa[len(summa)-1] != nums[i] {
+					summa = append(summa, nums[i])
+					summa = append(summa, nums[i+1])
+				}
+			} else if len(summa) == 0 {
+				summa = append(summa, nums[i])
+				//summa = append(summa, nums[i+1])
+			}
+		}
+	}
+	fmt.Println(summa) // на выходе [1 2 3 12 13 200 201 203 204 502 503 504 505]
+}*/
+
+// ЗАДАНИЕ 12
+/*func csv_writer(data [][]string) {
+	file, err := os.Create("file.csv")
+	if err != nil {
+		panic(err)
+	}
+	defer file.Close()
+
+	writer := csv.NewWriter(file)
+	defer writer.Flush()
+
+	header := []string{"Name", "Age", "Email"}
+	writer.Write(header)
+
+	for _, row := range data {
+		writer.Write(row)
+	}
+}*/
